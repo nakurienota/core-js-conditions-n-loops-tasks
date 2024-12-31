@@ -115,8 +115,8 @@ function convertToRomanNumerals(num) {
   ];
 
   let result = '';
-  for (const element of romanianNumerals) {
-    const { value, numeral } = element;
+  for (let i = 0; i < romanianNumerals.length; i += 1) {
+    const { value, numeral } = romanianNumerals[i];
     while (tmp >= value) {
       result += numeral;
       tmp -= value;
