@@ -242,7 +242,8 @@ function getIndexOf(str, letter) {
  */
 function isContainNumber(num, digit) {
   const string = String(num);
-  for (const element of string) if (Number(element) === digit) return true;
+  for (let i = 0; i < string.length; i += 1)
+    if (Number(string[i]) === digit) return true;
   return false;
 }
 
@@ -349,21 +350,22 @@ function rotateMatrix(matrix) {
  *  [-2, 9, 5, -3]  => [-3, -2, 5, 9]
  */
 function sortByAsc(arr) {
+  const result = arr;
   function partition(low, high) {
-    const pivot = arr[high];
+    const pivot = result[high];
     let i = low - 1;
 
     for (let j = low; j < high; j += 1) {
       if (arr[j] <= pivot) {
         i += 1;
-        const temp = arr[i];
-        arr[i] = arr[j];
-        arr[j] = temp;
+        const temp = result[i];
+        result[i] = result[j];
+        result[j] = temp;
       }
     }
-    const temp = arr[i + 1];
-    arr[i + 1] = arr[high];
-    arr[high] = temp;
+    const temp = result[i + 1];
+    result[i + 1] = result[high];
+    result[high] = temp;
 
     return i + 1;
   }
@@ -376,7 +378,7 @@ function sortByAsc(arr) {
     }
   }
 
-  quickSortHelper(0, arr.length - 1);
+  quickSortHelper(0, result.length - 1);
   return arr;
 }
 
